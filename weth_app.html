@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <title>Weather Application</title>
+
+    <head>
+        <link rel="stylesheet" href="weth_app.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script defer src="weth_app.js"></script>
+      </head>
+      
+      <body>
+        <div class="split left">  
+          <form id="search">
+              <input type="text" placeholder="Enter City Name" id="input  " required autocomplete="off"/>
+              <br></br>
+              <button type="submit" id="searchbtn">Search</button>
+          </form>
+<main id="app-container">
+
+<div id ="location">
+<p>.....</p>
+</div>
+
+<div id="temp">
+    <img id="temp-icon" src="img4.png" >
+    <p><span id="temp-value">......</span> <span id="temp-unit">&#176c</span></p>
+</div>
+<div id="climate">
+    <p>....</p>
+</div>
+</div>
+</main>
+<div class="split right">
+<div class = "container"></div>
+<div class = "title"><p> 5 Day Weather Forecast</p></div>
+<div id = "city"></div>
+
+<div class="weather-wrapper">
+    <div class="weather-card madrid">
+        <div class="weather-icon sun"></div>
+   <div id = "card1" ></div>
+   <div id ="location">
+    <p>.....</p>
+    </div>
+    
+    <div id="temp1">
+        <img id="temp1-icon" src="img5.png" >
+        
+    </div>
+    <div id="climate1">
+        <p>....</p>
+    </div>
+    </div>
+</div>
+      </div>  
+    </div>
+<script>
+    let loc1=document.getElementById("location1");
+    let climate1= document.getElementById("climate1");
+
+    window.addEventListener("load",()=>{ 
+
+     let lat=pos.coords.latitude;
+     let long=pos.coords.longtude;
+        
+    })
+    const api=`${proxy}api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude={city}&appid=110a8a090f5a0cb4cdec3b853ecbb3b6`
+
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=city&appid=110a8a090f5a0cb4cdec3b853ecbb3b6").then((response)=>{
+        return response.json();
+
+        })
+        .then(data =>
+            {
+                const{name}=data;
+                const{feels_like}=data.card1;
+                const{id,card1}=data.weather[0];
+
+                loc1.textContent=name;
+                climate1.textContent=card1;                
+            })
+    
+
+        
+    
+</script>
+
+
+
+      </body>
+      </html>
